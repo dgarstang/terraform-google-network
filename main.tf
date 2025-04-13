@@ -2,9 +2,9 @@
 # Create a custom VPC and do not auto create networks.
 #
 resource "google_compute_network" "custom_vpc" {
-  name                    = "custom"
-  auto_create_subnetworks = false
-  description             = "Custom network"
+  name                    = var.network_name
+  auto_create_subnetworks = var.auto_create_subnetworks
+  description             = var.network_description
   routing_mode            = "REGIONAL"
 }
 
