@@ -18,3 +18,14 @@ resource "google_compute_subnetwork" "custom_subnet" {
   region        = each.value.region
   network       = google_compute_network.custom_vpc.id
 }
+
+resource "google_compute_firewall" "ingress-allow-from-us-west1-all" {
+  name    = "ingress-allow-from-us-west1-all"
+  network = "custom"
+  direction = "INGRESS"
+  priority  = 1000
+  allow {
+    protocol = "all"
+  }
+  source_ranges = ["10.138.0.0/20"]
+}
