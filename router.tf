@@ -2,6 +2,7 @@ resource "google_compute_router" "nat_router" {
   name    = "nat-router"
   network = "custom" # Replace with var.network_name if using variables
   region  = "us-west1"
+  depends_on = [google_compute_network.custom_vpc]
 }
 
 resource "google_compute_router_nat" "nat_config" {
