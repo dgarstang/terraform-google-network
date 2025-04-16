@@ -28,4 +28,5 @@ resource "google_compute_firewall" "ingress-allow-from-us-west1-all" {
     protocol = "all"
   }
   source_ranges = ["10.138.0.0/20"]
+  depends_on = [google_compute_network.custom_vpc]
 }
